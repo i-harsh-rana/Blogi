@@ -107,6 +107,26 @@ export class Service{
             return false;
         }
     }
+
+    async deleteFile(fileId){
+        try {
+            await this.bucket.deleteFile(
+                conf.appwriteBucketId,
+                fileId,
+            )
+            return true;
+        } catch (error) {
+            throw error;
+            return false;
+        }
+    }
+
+    filePreview(fileId){
+        return this.bucket.filePreview(
+            conf.appwriteBucketId,
+            fileId,
+        )
+    }
 }
 
 const service = new Service();
