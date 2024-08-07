@@ -15,7 +15,7 @@ export class AuthService{
 
     async createAccount({email, password, name}){
         try {
-            const userAccount = await this.account.create(ID.unique, email, password, name);
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
                 return this.login({email, password});
             }else{
@@ -34,24 +34,27 @@ export class AuthService{
         }
     }
 
-    async getCurrentUser(){
-        try {
-            return await this.account.get();
-        } catch (error) {
-            throw error;
-        }
-        return null;
+    async getCurrentUser() {
+    try {
+        const user = await this.account.get();
+        console.log('Current user:', user);
+        return user;
+    } catch (error) {
+        console.error('Failed to fetch current user:', error);
+        throw error;
     }
+}
+
 
     async logout(){
         try {
-            return await this.account.deleteSessions();
+            await this.account.deleteSessions();
         } catch (error) {
             throw error;
         }
     }
 }
 
-const authService = new AuthService();
+const authService = new AuthService()
 
 export default authService
