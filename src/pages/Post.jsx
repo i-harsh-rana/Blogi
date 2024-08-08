@@ -27,7 +27,7 @@ export default function Post() {
         appwriteService.deletePost(post.$id).then((status) => {
             if (status) {
                 appwriteService.deleteFile(post.featuredImage);
-                navigate("/");
+                navigate("/all-posts");
             }
         });
     };
@@ -39,27 +39,26 @@ export default function Post() {
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl w-1/3"
                     />
 
                     {isAuthor && (
                         <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
-                                </Button>
+                            <i class="fa-regular fa-pen-to-square" style={{fontSize: '2rem', color: "#333333", cursor: "pointer", marginRight: '1.5rem'}}></i>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
-                            </Button>
+                            <i class="fa-regular fa-trash-can" onClick={deletePost} style={{fontSize: '2rem', color: "#333333", cursor: "pointer", marginRight: '1rem'}}></i>
                         </div>
                     )}
                 </div>
                 <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                    <h1 className="text-4xl font-semibold text-text-color mt-10">{post.title}</h1>
                 </div>
                 <div className="browser-css">
+                    <p className="leading-loose text-lg text-text-color">
                     {parse(post.content)}
+                    </p>
+                    
                     </div>
             </Container>
         </div>

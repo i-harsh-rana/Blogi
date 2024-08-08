@@ -1,54 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import appwriteService from "../appwrite/config";
-import { Container, PostCard } from '../components'
+import React from 'react';
+import SVGslider from '../components/SVGslider';
+import Welcome from '../components/Welcome';
 
 function Home() {
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const postsResponse = await appwriteService.getPosts();
-                if (postsResponse && postsResponse.documents) {
-                    setPosts(postsResponse.documents);
-                }
-            } catch (error) {
-                console.error("Failed to fetch posts:", error);
-                setPosts([]); // Ensure posts is always an array
-            }
-        };
-
-        fetchPosts();
-    }, [])
-
-    if (posts.length === 0) {
-        return (
-            <div className="w-full py-8 mt-4 text-center">
-                <Container>
-                    <div className="flex flex-wrap">
-                        <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to read posts
-                            </h1>
-                        </div>
-                    </div>
-                </Container>
-            </div>
-        )
-    }
-    return (
-        <div className='w-full py-8'>
-            <Container>
-                <div className='flex flex-wrap'>
-                    {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard {...post} />
-                        </div>
-                    ))}
-                </div>
-            </Container>
+  return (
+    <div className="flex flex-wrap">
+      <div className="w-full md:w-1/2">
+        <SVGslider />
+      </div>
+      <div className="w-full md:w-1/2 flex flex-col relative top-24 ">
+        <div className="mb-6">
+          <Welcome />
         </div>
-    )
+        <div>
+          <p style={{color: '#333333', fontWeight: '100'}} className="text-lg leading-[2.5] md:w-4/5 mt-12">
+          At Bloggi, we're excited to offer you a wide range of free, engaging content. Discover the latest trends, practical tips, and inspiring stories all in one place. Our goal is to provide you with valuable insights and enjoyable reads without any cost. Explore our articles, join our vibrant community, and let us be your go-to source for quality content. Enjoy your journey with Bloggi!
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

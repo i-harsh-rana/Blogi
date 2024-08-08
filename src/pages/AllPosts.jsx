@@ -8,11 +8,9 @@ function AllPosts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                // Fetch posts directly
                 const postsResponse = await appwriteService.getPosts([]);
-                console.log("Posts response:", postsResponse); // Log the response
+                console.log("Posts response:", postsResponse);
 
-                // Directly set the posts array if it's not empty
                 if (Array.isArray(postsResponse)) {
                     setPosts(postsResponse);
                 } else {
@@ -46,12 +44,11 @@ function AllPosts() {
 
     return (
         <div className='w-full py-8'>
+            <h1 className='text-3xl text-center font-medium p-4 mb-4'>All Posts</h1>
             <Container>
-                <div className='flex flex-wrap'>
+                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard {...post} />
-                        </div>
+                        <PostCard key={post.$id} {...post} />
                     ))}
                 </div>
             </Container>

@@ -7,16 +7,16 @@ function PostCard({ $id, title, featuredImage }) {
 
     return (
         <Link to={`/post/${$id}`}>
-            <div className='w-full bg-gray-100 rounded-xl p-4'>
-                <div className='w-full justify-center mb-4'>
+            <div className='w-full rounded-xl p-4 hover:bg-light-main duration-200 border border-solid ' style={{ height: '450px'}}>
+                <div className='w-full h-4/5 flex justify-center mb-4'>
                     <img 
                         src={previewUrl} 
                         alt={title} 
-                        className='rounded-xl' 
+                        className='rounded-xl object-cover h-full w-full' 
                         onError={(e) => e.target.style.display = 'none'}  // Hide image if there's an error
                     />
                 </div>
-                <h2 className='text-xl font-bold'>{title}</h2>
+                <h2 className='text-2xl font-medium pt-2 h-1/5'>{title}</h2>
             </div>
         </Link>
     );
