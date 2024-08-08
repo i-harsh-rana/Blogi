@@ -5,10 +5,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': '/src', // This allows using @ as an alias for /src
+      '@': '/src',
     },
-  },
-  build: {
-    outDir: 'dist',
   },
 });
