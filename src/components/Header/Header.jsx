@@ -40,14 +40,14 @@ function Header() {
   return (
     <header className='p-8 shadow sticky top-0 bg-opacity-55 backdrop-filter backdrop-blur-lg min-h-10' >
       <Container>
-        <nav className='flex flex-wrap justify-center items-center '>
+        <nav className=' flex flex-wrap justify-center items-center '>
           <div className='mr-4'>
             <Link to='/'>
               <Logo width='70px'   />
 
               </Link>
           </div>
-          <ul className='flex ml-auto'>
+          <ul className='pt-8 md:pt-0 flex ml-auto'>
             {navItems.map((item) => 
             item.active ? (
               <li key={item.name}>

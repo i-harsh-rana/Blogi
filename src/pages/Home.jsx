@@ -1,20 +1,25 @@
 import React from 'react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import SVGslider from '../components/SVGslider';
 import Welcome from '../components/Welcome';
 
 function Home() {
   return (
-    <div className="flex flex-wrap">
-      <div className="w-full md:w-1/2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+      {/* SVGslider container */}
+      <div className="flex justify-center items-center md:h-[800px] h-[400px]">
         <SVGslider />
       </div>
-      <div className="w-full md:w-1/2 flex flex-col relative top-24 ">
-        <div className="mb-6">
+
+      {/* Welcome text container */}
+      <div className="flex flex-col justify-center">
+        <div className="mb-6 p-5 md:mt-40">
           <Welcome />
         </div>
-        <div>
-          <p style={{color: '#333333', fontWeight: '100'}} className="text-lg leading-[2.5] md:w-4/5 mt-12">
-          At Bloggi, we're excited to offer you a wide range of free, engaging content. Discover the latest trends, practical tips, and inspiring stories all in one place. Our goal is to provide you with valuable insights and enjoyable reads without any cost. Explore our articles, join our vibrant community, and let us be your go-to source for quality content. Enjoy your journey with Bloggi!
+        <div className="flex-1">
+          <p className="text-lg md:text-xl p-7 md:pr-44 leading-loose  text-gray-800">
+            At Bloggi, we're excited to offer you a wide range of free, engaging content. Discover the latest trends, practical tips, and inspiring stories all in one place. Our goal is to provide you with valuable insights and enjoyable reads without any cost. Explore our articles, join our vibrant community, and let us be your go-to source for quality content. Enjoy your journey with Bloggi!
           </p>
         </div>
       </div>

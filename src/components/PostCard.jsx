@@ -13,7 +13,8 @@ function PostCard({ $id, title, featuredImage }) {
                         src={previewUrl} 
                         alt={title} 
                         className='rounded-xl object-cover h-full w-full' 
-                        onError={(e) => e.target.style.display = 'none'}  // Hide image if there's an error
+                        onError={(e) => e.target.style.display = 'none'} 
+                        
                     />
                 </div>
                 <h2 className='text-2xl font-medium pt-2 h-1/5'>{title}</h2>
@@ -23,3 +24,6 @@ function PostCard({ $id, title, featuredImage }) {
 }
 
 export default PostCard;
+
+
+
